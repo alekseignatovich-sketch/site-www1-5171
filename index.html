@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Time Map</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 40px auto;
+        }
+        
+        .map {
+            width: 100%;
+            height: 600px;
+        }
+        
+        .time {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .map {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .map {
+                height: 300px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="map">
+            <img src="https://image.pollinations.ai/prompt/world_map">
+        </div>
+        <div class="time">
+            <h2>Time Zones:</h2>
+            <ul>
+                <li>New York: <span id="new-york-time"></span></li>
+                <li>London: <span id="london-time"></span></li>
+                <li>Tokyo: <span id="tokyo-time"></span></li>
+                <li>Sydney: <span id="sydney-time"></span></li>
+                <li>Paris: <span id="paris-time"></span></li>
+                <li>Beijing: <span id="beijing-time"></span></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        // Get time elements
+        const newYorkTime = document.getElementById('new-york-time');
+        const londonTime = document.getElementById('london-time');
+        const tokyoTime = document.getElementById('tokyo-time');
+        const sydneyTime = document.getElementById('sydney-time');
+        const parisTime = document.getElementById('paris-time');
+        const beijingTime = document.getElementById('beijing-time');
+
+        // Set time zones
+        const timeZone = {
+            'New York': 'America/New_York',
+            'London': 'Europe/London',
+            'Tokyo': 'Asia/Tokyo',
+            'Sydney': 'Australia/Sydney',
+            'Paris': 'Europe/Paris',
+            'Beijing': 'Asia/Shanghai'
+        };
+
+        // Update time every second
+        setInterval(() => {
+            // Get current time
+            const currentTime = new Date().toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            });
+
+            // Update time elements
+            newYorkTime.textContent = currentTime;
+            londonTime.textContent = currentTime;
+            tokyoTime.textContent = currentTime;
+            sydneyTime.textContent = currentTime;
+            parisTime.textContent = currentTime;
+            beijingTime.textContent = currentTime;
+        }, 1000);
+    </script>
+</body>
+</html>
